@@ -1,0 +1,50 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Piezas</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let puzzle of puzzles" [ngClass]="{'clearance': puzzle.clearance}">
+            <td><img [src]="puzzle.image" [alt]="puzzle.name"/></td>
+            <td>{{puzzle.name}}</td>
+            <td>{{puzzle.pieces}}</td>
+            <td>{{puzzle.price | currency}}</td>
+            <td>{{puzzle.stock}}</td>
+            <td>
+                <button (click)="downQuantity(puzzle)">-</button>
+                <input type="text" [(ngModel)]="puzzle.quantity">
+                <button (click)="upQuantity(puzzle)">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
