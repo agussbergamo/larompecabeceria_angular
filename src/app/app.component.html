@@ -1,15 +1,17 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Rompecabezas por tema</a>
+        <a class="nav-link active" aria-current="page" href="#" [routerLink]="['/puzzles']">Rompecabezas por tema</a>
         <a class="nav-link" href="#">Rompecabezas por nº de piezas</a>
         <a class="nav-link" href="#">Rompecabezas por marca</a>
         <a class="nav-link" href="#">Accesorios</a>
+        <a class="nav-link" href="#" [routerLink]="['/about']">Sobre nosotros</a> 
       </div>
     </div>
   </div>
@@ -35,11 +37,8 @@
   </li>
 </ul>
 
-<div class="container">
-  <div class="row">
-    <div class="col-8"><app-puzzle-list></app-puzzle-list></div>
-    <div class="col-4">Carrito de compras</div>
-  </div>
+<div>
+  <router-outlet ></router-outlet>
 </div>
 
-<footer>{{title}} - Todos los derechos reservados</footer>
+<!--<footer>{{title}} - Todos los derechos reservados</footer>-->

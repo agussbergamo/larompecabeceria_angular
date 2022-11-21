@@ -1,50 +1,30 @@
-<table class="table">
+<h3 class="text-center">Nuestros rompecabezas</h3>
+<table class="table text-center">
     <thead>
         <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Piezas</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Comprar</th>
+            <th class="col-2">Imagen</th>
+            <th class="col-2">Nombre</th>
+            <th class="col-2">Piezas</th>
+            <th class="col-2">Precio</th>
+            <th class="col-2">Stock</th>
+            <th class="col-2">Cantidad</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let puzzle of puzzles" [ngClass]="{'clearance': puzzle.clearance}">
-            <td><img [src]="puzzle.image" [alt]="puzzle.name"/></td>
-            <td>{{puzzle.name}}</td>
-            <td>{{puzzle.pieces}}</td>
-            <td>{{puzzle.price | currency}}</td>
-            <td>{{puzzle.stock}}</td>
-            <td>
-                <button (click)="downQuantity(puzzle)">-</button>
-                <input type="text" [(ngModel)]="puzzle.quantity">
-                <button (click)="upQuantity(puzzle)">+</button>
+        <tr *ngFor="let puzzle of puzzles"  >
+            <td><img [src]="puzzle.image" [alt]="puzzle.name" /></td>
+            <td class="align-middle">{{puzzle.name}}</td>
+            <td class="align-middle">{{puzzle.pieces}}</td>
+            <td class="align-middle" [ngClass]="{'clearance': puzzle.clearance}">{{puzzle.price | currency}}</td>
+            <td class="align-middle">{{puzzle.stock}}</td>
+            <td class="align-middle">
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-dark" id="basic-addon1" (click)="downQuantity(puzzle)">-</button>
+                    <input type="text" class="col-sm-3 text-center form-control" [(ngModel)]="puzzle.quantity">
+                    <button class="btn btn-outline-dark" id="basic-addon2" (click)="upQuantity(puzzle)">+</button>
+                </div>
+                <button class="btn btn-dark" (click)="addToCart(puzzle)">Comprar</button>
             </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
     </tbody>
 </table>

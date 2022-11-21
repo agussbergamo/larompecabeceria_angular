@@ -1,0 +1,23 @@
+<h3 class="text-center">Carrito de compras</h3>
+<!--<ul>
+    <li *ngFor="let puzzle of (cartList$ | async)">
+        {{puzzle.name}}: {{puzzle.quantity}}
+    </li>
+</ul>-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rompecabezas</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let puzzle of (cartList$ | async)">
+            <td>{{puzzle.name}}</td>
+            <td>{{puzzle.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Total del carrito : {{total$}}</p>

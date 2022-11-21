@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PuzzleCartService } from '../puzzle-cart.service';
+import { PuzzleDataService } from '../puzzle-data.service';
 import { Puzzle } from './Puzzle';
 
 @Component({
@@ -8,56 +10,15 @@ import { Puzzle } from './Puzzle';
 })
 export class PuzzleListComponent implements OnInit {
 
-  puzzles: Puzzle [] = [{
-    image: "assets/img/cataratas.jpg",
-    name: "Cataratas del Iguazú", 
-    pieces: 1000,
-    price: 8000, 
-    stock: 7,
-    clearance: false, 
-    quantity: 0,
-  },
-  {
-    image: "assets/img/nueva-york.jpg",
-    name: "Nueva York", 
-    pieces: 3000,
-    price: 15000,
-    stock: 9,
-    clearance: false, 
-    quantity: 0,
-  },
-  {
-    image: "assets/img/plaza-san-pedro.jpg",
-    name: "Plaza San Pedro", 
-    pieces: 1500,
-    price: 4000,
-    stock: 3,
-    clearance: true, 
-    quantity: 0,
-  },
-  {
-    image: "assets/img/las-vegas.jpg",
-    name: "Las Vegas", 
-    pieces: 1500,
-    price: 4000,
-    stock: 8,
-    clearance: true, 
-    quantity: 0,
-  },
-  {
-    image: "assets/img/londres.jpg",
-    name: "Londres", 
-    pieces: 2000,
-    price: 11000,
-    stock: 0,
-    clearance: false, 
-    quantity: 0,
-  },
-];
+  puzzles: Puzzle [] = [];
 
-  constructor() { }
+  constructor(
+    private cart: PuzzleCartService,
+    private puzzleData: PuzzleDataService) {
+   }
 
   ngOnInit(): void {
+    this.puzzleData.getAll().subscribe(puzzles => this.puzzles = puzzles);
   }
 
   upQuantity(puzzle: Puzzle): void {
@@ -68,6 +29,12 @@ export class PuzzleListComponent implements OnInit {
   downQuantity(puzzle: Puzzle): void {
     if(puzzle.quantity >0)
     puzzle.quantity--;
+  }
+
+  addToCart(puzzle: Puzzle): void{
+    this.cart.addToCart(puzzle);
+    puzzle.stock -= puzzle.quantity;
+    puzzle.quantity = 0;
   }
 
 
