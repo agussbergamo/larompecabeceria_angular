@@ -11,12 +11,14 @@ import { Puzzle } from '../puzzle-list/Puzzle';
 export class CartComponent implements OnInit {
 
   cartList$: Observable<Puzzle[]>;
-  total$: Observable<number>; 
+  //total$: Observable<number>; 
+  total!: number; 
 
   constructor(private cart: PuzzleCartService) {
     this.cartList$ = cart.cartList.asObservable();
-    this.total$ = cart.total.asObservable();
-   }
+    //this.total$ = cart.total.asObservable();
+    cart.total.subscribe(t=>this.total=t);
+  }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,4 @@
 <h3 class="text-center">Carrito de compras</h3>
-<!--<ul>
-    <li *ngFor="let puzzle of (cartList$ | async)">
-        {{puzzle.name}}: {{puzzle.quantity}}
-    </li>
-</ul>-->
 
 <table class="table">
     <thead>
@@ -20,4 +15,4 @@
     </tbody>
 </table>
 
-<p>Total del carrito : {{total$}}</p>
+<p>Total del carrito : {{total | currency}}</p>

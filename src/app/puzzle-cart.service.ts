@@ -10,8 +10,8 @@ export class PuzzleCartService {
   _cartList: Puzzle[] = [];
   cartList: BehaviorSubject<Puzzle[]> = new BehaviorSubject<Puzzle[]>([]);
   _total: number = 0;
-  total: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-   
+  total: BehaviorSubject<number> = new BehaviorSubject<number>(this._total);
+  
 
   addToCart(puzzle: Puzzle) {
     let item: Puzzle | undefined = this._cartList.find((p) => p.name == puzzle.name);
@@ -27,7 +27,6 @@ export class PuzzleCartService {
 
   getTotal(){
     this._cartList.forEach(puzzle => {
-      console.log(puzzle.price);
       this._total += puzzle.price;
     });
     console.log(this._total);
