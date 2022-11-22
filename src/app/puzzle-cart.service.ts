@@ -26,8 +26,9 @@ export class PuzzleCartService {
   }
 
   getTotal(){
+    this._total = 0; 
     this._cartList.forEach(puzzle => {
-      this._total += puzzle.price;
+      this._total += (puzzle.price * puzzle.quantity)  
     });
     console.log(this._total);
     this.total.next(this._total);
